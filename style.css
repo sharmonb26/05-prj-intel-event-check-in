@@ -336,10 +336,123 @@ select {
   background-color: #fff7ed;
 }
 
+.team-card.winner {
+  border: 3px solid #00c7fd;
+  box-shadow: 0 0 16px #00c7fd66;
+  background-color: #fffbe6;
+}
+
+.team-card.flash {
+  animation: flash-box 0.7s alternate infinite;
+  border-color: #00c7fd;
+  box-shadow: 0 0 16px #00c7fd66;
+}
+
+@keyframes flash-box {
+  0% {
+    box-shadow: 0 0 16px #00c7fd66;
+    border-color: #00c7fd;
+  }
+  100% {
+    box-shadow: 0 0 32px #00c7fdcc;
+    border-color: #00aeef;
+  }
+}
+
 .team-name {
   font-size: 15px;
   font-weight: 500;
   color: #475569;
+}
+
+/* Attendee Table */
+.attendee-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 18px;
+  background: #f8fafc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 60, 116, 0.07);
+}
+
+.attendee-table th,
+.attendee-table td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 17px;
+}
+
+.attendee-table th {
+  background-color: #e8f4fc;
+  color: #0071c5;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.attendee-table tr:last-child td {
+  border-bottom: none;
+}
+
+.attendee-table td {
+  background: #fff;
+  vertical-align: middle;
+}
+
+.attendee-table tr:hover td {
+  background-color: #f1f5f9;
+  transition: background 0.2s;
+}
+
+/* Remove attendee button */
+.remove-attendee-btn {
+  background: #e8f4fc;
+  border: none;
+  color: #222; /* changed from #e53e3e to black */
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(34, 34, 34, 0.07); /* updated shadow color */
+  margin-left: 6px;
+  outline: none;
+}
+
+.remove-attendee-btn:hover,
+.remove-attendee-btn:focus {
+  background: #ededed;
+  color: #000; /* pure black on hover/focus */
+  box-shadow: 0 4px 12px rgba(34, 34, 34, 0.15); /* updated shadow color */
+}
+
+/* Confetti styles */
+#confetti {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: confetti-fall 2s linear forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.5;
+  }
 }
 
 /* Mobile responsive */
@@ -375,4 +488,8 @@ select {
   .teams-grid {
     grid-template-columns: 1fr;
   }
+}
+
+#attendeeListSection h3 {
+  margin-top: 40px;
 }
