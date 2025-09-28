@@ -1,4 +1,4 @@
-onsole.log("script.js loaded");
+console.log("script.js loaded");
 
 // Get all needed DOM elements
 const form = document.getElementById("checkInForm");
@@ -345,5 +345,6 @@ function showWinnerMessage() {
   localStorage.setItem("goalMessage", message);
   localStorage.setItem("winnerTeams", JSON.stringify(winners));
 }
+
 
 
