@@ -331,6 +331,43 @@ function showWinnerMessage() {
   localStorage.setItem("winnerTeams", JSON.stringify(winners));
 }
 
+// Add 49 random names if attendees list is empty
+if (!localStorage.getItem("attendees") || attendees.length === 0) {
+  const randomNames = [
+    "Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley", "Jamie", "Drew", "Cameron", "Quinn",
+    "Skyler", "Peyton", "Reese", "Rowan", "Avery", "Blake", "Dakota", "Emerson", "Finley", "Harper",
+    "Jesse", "Kendall", "Logan", "Micah", "Parker", "Phoenix", "River", "Sage", "Sawyer", "Shawn",
+    "Spencer", "Sydney", "Tatum", "Teagan", "Tristan", "Val", "Winter", "Zion", "Charlie", "Elliot",
+    "Frankie", "Jules", "Kai", "Lane", "Marley", "Noel", "Oakley", "Remy", "Sam"
+  ];
+  const teams = ["water", "zero", "power"];
+  attendees = [];
+  for (let i = 0; i < 49; i++) {
+    const name = randomNames[i % randomNames.length] + " " + (i + 1);
+    const team = teams[i % teams.length];
+    const teamName =
+      team === "water"
+        ? "Team Water Wise"
+        : team === "zero"
+        ? "Team Net Zero"
+        : "Team Renewables";
+    attendees.push({ name: name, team: team, teamName: teamName });
+    teamCounts[team]++;
+  }
+  count = 49;
+  attendeeCount.textContent = count;
+  waterCount.textContent = teamCounts.water;
+  zeroCount.textContent = teamCounts.zero;
+  powerCount.textContent = teamCounts.power;
+  localStorage.setItem("attendanceCount", count);
+  localStorage.setItem("teamCounts", JSON.stringify(teamCounts));
+  localStorage.setItem("attendees", JSON.stringify(attendees));
+  updateAttendeeList();
+  progressBar.style.width = `${Math.round((count / maxCount) * 100)}%`;
+}
+
+
+
 
 
 
