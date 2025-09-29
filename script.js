@@ -15,24 +15,9 @@ const attendeeList = document
   .getElementsByTagName("tbody")[0];
 const confettiContainer = document.getElementById("confetti");
 
-/ Check all needed DOM elements exist
-if (
-  !form ||
-  !nameInput ||
-  !teamSelect ||
-  !attendeeCount ||
-  !waterCount ||
-  !zeroCount ||
-  !powerCount ||
-  !greeting ||
-  !progressBar ||
+
   !document.getElementById("attendeeList") ||
   !document.getElementById("confetti")
-) {
-  console.log("One or more required elements are missing from the HTML.");
-  // Stop script if elements are missing
-  throw new Error("Missing DOM elements. Check your HTML IDs.");
-}
 
 // Track attendance
 let count = 0;
@@ -345,6 +330,7 @@ function showWinnerMessage() {
   localStorage.setItem("goalMessage", message);
   localStorage.setItem("winnerTeams", JSON.stringify(winners));
 }
+
 
 
 
